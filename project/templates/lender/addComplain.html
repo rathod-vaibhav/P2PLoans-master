@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Complain</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/payloan-icon.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/icofont.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/animate.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/settings.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/owl.theme.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/owl.carousel.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/preset.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/theme.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/responsive.css"/>
+
+    <link rel="icon" type="image/png" href="../../static/userResources/images/favicon.ico">
+</head>
+<body class="bg_right">
+
+
+{% include 'lender/header.html' %}
+
+
+<section class="pagebanner" style="height: 40px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="bannerTitle text-left">
+                    <h2>Complain</h2>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="commonSection contactPage" style="height: 700px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="formArea">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <form action="/lender/insertComplain" method="post" class="contactFrom row"
+                                  enctype="multipart/form-data">
+                                <div class="col-md-12">
+                                    <input class="required" type="text" name="complainSubject" id="subject"
+                                           placeholder="Subject" required>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <textarea class="required" name="complainDescription" id="description"
+                                              placeholder="Description Text here...." required
+                                              style="height:150px"></textarea>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="custom-file mb-3">
+                                        <input type="file" class="custom-file-input" id="customFile"
+                                               name="complainFile">
+                                        <label class="custom-file-label" for="customFile">Choose File</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12  col-md-12" align="center">
+                                    <button name="submit" type="submit" id="submit" class="common_btn">Submit
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'lender/footer.html' %}
+
+
+<script data-cfasync="false" src="../../static/userResources/js/email-decode.min.js"></script>
+<script src="../../static/userResources/js/jquery.js" type="04633b0303c7c8f2b33d6432-text/javascript"></script>
+<script src="../../static/userResources/js/bootstrap.min.js"
+        type="04633b0303c7c8f2b33d6432-text/javascript"></script>
+<script src="../../static/userResources/js/jquery.themepunch.revolution.min.js"
+        type="04633b0303c7c8f2b33d6432-text/javascript"></script>
+<script src="../../static/userResources/js/jquery.themepunch.tools.min.js"
+        type="04633b0303c7c8f2b33d6432-text/javascript"></script>
+<script src="../../static/userResources/js/jquery-ui.js" type="04633b0303c7c8f2b33d6432-text/javascript"></script>
+<script src="../../static/userResources/js/shuffle.js" type="04633b0303c7c8f2b33d6432-text/javascript"></script>
+<script src="../../static/userResources/js/slick.js" type="04633b0303c7c8f2b33d6432-text/javascript"></script>
+<script src="../../static/userResources/js/gmaps.js" type="04633b0303c7c8f2b33d6432-text/javascript"></script>
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyCysDHE3s4Qw3nTh9o58-2mJcqvR6HV8Kk"
+        type="04633b0303c7c8f2b33d6432-text/javascript"></script>
+<script src="../../static/userResources/js/owl.carousel.js" type="04633b0303c7c8f2b33d6432-text/javascript"></script>
+<script src="../../static/userResources/js/theme.js" type="04633b0303c7c8f2b33d6432-text/javascript"></script>
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js"
+        data-cf-settings="04633b0303c7c8f2b33d6432-|49" defer=""></script>
+</body>
+</html>

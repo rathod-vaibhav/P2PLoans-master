@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>View Loan Detail</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/payloan-icon.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/icofont.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/animate.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/settings.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/owl.theme.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/owl.carousel.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/preset.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/theme.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/userResources/css/responsive.css"/>
+
+    <link rel="icon" type="image/png" href="../../static/userResources/images/favicon.ico">
+</head>
+<body class="bg_right">
+
+
+{% include 'borrower/header.html' %}
+
+
+<section class="pagebanner">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="bannerTitle text-left">
+                    <h2>Loan Details</h2>
+                    <p>We are here to help you when you need your<br>financial support, then we are help you.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="commonSection serviceDetails">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="tw-stretch-element-inside-column">
+                    <div class="serDetailThumb">
+                        <img src="../../static/userResources/images/s1.png" alt=""/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="serDetailContent">
+                    <form action="/borrower/insertLoanApplication" method="post" class="contactFrom row">
+                        <h3>You can know loan details here.</h3>
+                        {% for row in loanDetailList %}
+                            <input type="text" hidden name="loanId" value="{{ row[0]['loanId'] }}" class="form-control">
+                            <h4>
+                                <p>
+                                    Lender Name : {{ row[2]['lenderName'] }}
+                                </p>
+                                <p>
+                                    Amount : {{ row[0]['loanAmount'] }}
+                                </p>
+                                <p>
+                                    rate : {{ row[0]['loanRate'] }}%
+                                </p>
+                                <p>
+                                    Duration (Month) : {{ row[0]['loanDuration'] }}
+                                </p>
+                                <p>
+                                    EMI:{{ row[0]['loanEMI'] }}
+                                </p>
+                                <p>
+                                    City : {{ row[3]['cityName'] }}
+                                </p>
+                                <p>
+                                    Area : {{ row[4]['areaName'] }}
+                                </p>
+                            </h4>
+                        {% endfor %}
+                        <div class="col-lg-12  col-md-12" align="center">
+                            <button name="submit" type="submit" class="common_btn">Apply</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+
+{% include 'borrower/footer.html' %}
+
+
+<script data-cfasync="false" src="../../static/userResources/js/email-decode.min.js"></script>
+<script src="../../static/userResources/js/jquery.js" type="94e47480dd01196e0d956fea-text/javascript"></script>
+<script src="../../static/userResources/js/bootstrap.min.js" type="94e47480dd01196e0d956fea-text/javascript"></script>
+<script src="../../static/userResources/js/jquery.themepunch.revolution.min.js"
+        type="94e47480dd01196e0d956fea-text/javascript"></script>
+<script src="../../static/userResources/js/jquery.themepunch.tools.min.js"
+        type="94e47480dd01196e0d956fea-text/javascript"></script>
+<script src="../../static/userResources/js/jquery-ui.js" type="94e47480dd01196e0d956fea-text/javascript"></script>
+<script src="../../static/userResources/js/shuffle.js" type="94e47480dd01196e0d956fea-text/javascript"></script>
+<script src="../../static/userResources/js/slick.js" type="94e47480dd01196e0d956fea-text/javascript"></script>
+<script src="../../static/userResources/js/gmaps.js" type="94e47480dd01196e0d956fea-text/javascript"></script>
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyCysDHE3s4Qw3nTh9o58-2mJcqvR6HV8Kk"
+        type="94e47480dd01196e0d956fea-text/javascript"></script>
+<script src="../../static/userResources/js/owl.carousel.js" type="94e47480dd01196e0d956fea-text/javascript"></script>
+<script src="../../static/userResources/js/theme.js" type="94e47480dd01196e0d956fea-text/javascript"></script>
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js"
+        data-cf-settings="94e47480dd01196e0d956fea-|49" defer=""></script>
+</body>
+</html>

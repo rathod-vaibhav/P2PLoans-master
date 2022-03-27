@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>P2P Loans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description"/>
+    <meta content="Coderthemes" name="author"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <link rel="shortcut icon" href="../../static/adminResources/images/favicon.ico">
+
+    <link href="../../static/adminResources/css/c3.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="../../static/adminResources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/adminResources/css/icons.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/adminResources/css/metismenu.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/adminResources/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <script src="../../static/adminResources/js/highcharts.js"></script>
+    <script src="../../static/adminResources/js/exporting.js"></script>
+
+
+    <script src="../../static/adminResources/js/modernizr.min.js"></script>
+
+    <script type="text/javascript">
+
+        function loadGraph() {
+
+            var index_lender_LoginId = document.getElementById("index_lender_LoginId");
+
+            var ajax = new XMLHttpRequest();
+
+            ajax.onreadystatechange = function () {
+
+                if (ajax.readyState == 4) {
+
+                    var jsn = JSON.parse(ajax.responseText);
+
+                    if (jsn['responseKey'] != 'Error') {
+                        var xdata = [];
+                        var ydata = [];
+
+                        var xdata1 = [];
+                        var ydata1 = [];
+                        var ydata2 = [];
+
+                        for (var key in jsn['responseKey']) {
+
+                            var key_value = jsn['responseKey'][key];
+
+                            xdata.push(key_value['loanAmount']);
+                            ydata.push(key_value['loanEMI']);
+
+                            xdata1.push(key_value['loanAmount']);
+                            ydata1.push(key_value['loanRate']);
+                            ydata2.push(key_value['loanDuration']);
+                        }
+
+
+                        Highcharts.chart({
+                            chart: {
+                                renderTo: "container",
+
+                                type: 'column'
+                            },
+                            title: {
+                                text: 'Lender Loan Analysis'
+                            },
+                            subtitle: {
+                                text: 'Source: P2PLoans'
+                            },
+                            xAxis: {
+                                categories: xdata,
+                                crosshair: true
+                            },
+                            yAxis: {
+                                min: 0,
+                                title: {
+                                    text: 'lenderLoanEMI'
+                                }
+                            },
+                            plotOptions: {
+                                column: {
+                                    pointPadding: 0.2,
+                                    borderWidth: 0
+                                }
+                            },
+                            series: [{
+                                name: 'Lender Loan Amount',
+                                data: ydata
+
+                            }]
+                        });
+
+                        Highcharts.chart({
+                            chart: {
+                                renderTo: "container_graph",
+
+                                type: 'column'
+                            },
+                            title: {
+                                text: 'Loan Rate and Duration Analysis'
+                            },
+                            subtitle: {
+                                text: ''
+                            },
+                            xAxis: {
+                                categories: xdata1,
+                                crosshair: true
+                            },
+                            yAxis: {
+                                min: 0,
+                                title: {
+                                    text: ''
+                                }
+                            },
+                            plotOptions: {
+                                column: {
+                                    pointPadding: 0.2,
+                                    borderWidth: 0
+                                }
+                            },
+                            series: [{
+                                name: 'loanRate',
+                                data: ydata1
+
+                            }, {
+                                name: 'loanDuration',
+                                data: ydata2
+
+                            }]
+                        })
+                    }
+                }
+            };
+            ajax.open("get", "/admin/ajaxGetGraphData?index_lender_LoginId=" + index_lender_LoginId.value, true);
+
+            ajax.send()
+        }
+
+    </script>
+
+
+</head>
+
+
+<body>
+
+<div id="wrapper">
+
+    {% include 'admin/header.html' %}
+
+    {% include 'admin/menu.html' %}
+
+    <div class="content-page">
+
+        <div class="content">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <h4 class="page-title float-left">Dashboard</h4>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+
+                {% if dictData %}
+
+                <div class="row">
+
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="card-box widget-box-two widget-two-custom" style="height:88%;">
+                            <i class="mdi mdi-currency-usd widget-two-icon"></i>
+                            <div class="wigdet-two-content">
+                                <p class="m-0 text-uppercase font-bold font-secondary text-overflow" title="Statistics">
+                                    Total Amount of approved loan </p>
+                                <h2 class="font-600"><span><i class="mdi mdi-arrow-up"></i></span> <span
+                                        data-plugin="counterup">{{ dictData["totalApprovedamount"] }}</span></h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="card-box widget-box-two widget-two-custom" style="height:88%">
+                            <i class="mdi mdi-account-multiple widget-two-icon"></i>
+                            <div class="wigdet-two-content">
+                                <p class="m-0 text-uppercase font-bold font-secondary text-overflow" title="Statistics">
+                                    Total Unique Visitos</p>
+                                <h2 class="font-600"><span><i class="mdi mdi-arrow-up"></i></span> <span
+                                        data-plugin="counterup">{{ dictData["totalVisitors"] }}</span></h2>
+                                <p class="m-0">Lender : {{ dictData["totalLender"] }}, Borrower
+                                    : {{ dictData["totalBorrower"] }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="card-box widget-box-two widget-two-custom" style="height:88%">
+                            <i class="mdi mdi-thumbs-up-down widget-two-icon"></i>
+                            <div class="wigdet-two-content">
+                                <p class="m-0 text-uppercase font-bold font-secondary text-overflow" title="Statistics">
+                                    Number of Application</p>
+                                <h2 class="font-600"><span><i class="mdi mdi-arrow-up"></i></span> <span
+                                        data-plugin="counterup">{{ dictData["totalApplication"] }}</span></h2>
+                                <p class="m-0">Approved : {{ dictData["totalApprovedLoan"] }}, Reject
+                                    : {{ dictData["totalRejectLoan"] }}, Panding
+                                    : {{ dictData["totalPendingLoan"] }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="form-group">
+                    <label for="userName">Lender Name<span class="text-danger">*</span></label>
+                    <select name="index_lender_LoginId" aria-controls="datatable" id="index_lender_LoginId"
+                            onchange="loadGraph()"
+                            class="form-control form-control-sm" style="height: 40px">
+                        <option value="" hidden>Select Lender</option>
+                        {% for i in lenderVOList %}
+                            <option value="{{ i[0]['lender_LoginId'] }}">{{ i[0]['lenderName'] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+
+                <br><br>
+
+                <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                <input type="hidden" name="xvalue" value=""/>
+                <input type="hidden" name="yvalue" value=""/>
+
+                <br><br>
+
+                <div id="container_graph" style="min-width: 1000px; height: 400px; margin: 0 auto"></div>
+
+                <input type="hidden" name="xvalue" value=""/>
+                <input type="hidden" name="yvalue" value=""/>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    {#        {% include 'admin/footer.html' %}#}
+
+</div>
+
+
+</div>
+
+<script src="../../static/adminResources/js/jquery.min.js"></script>
+<script src="../../static/adminResources/js/popper.min.js"></script>
+<script src="../../static/adminResources/js/bootstrap.min.js"></script>
+<script src="../../static/adminResources/js/metisMenu.min.js"></script>
+<script src="../../static/adminResources/js/waves.js"></script>
+<script src="../../static/adminResources/js/jquery.slimscroll.js"></script>
+
+<script src="../../static/adminResources/js/jquery.waypoints.min.js"></script>
+<script src="../../static/adminResources/js/jquery.counterup.min.js"></script>
+
+<script type="text/javascript" src="../../static/adminResources/js/d3.min.js"></script>
+<script type="text/javascript" src="../../static/adminResources/js/c3.min.js"></script>
+
+<script src="../../static/adminResources/js/echarts-all.js"></script>
+
+<script src="../../static/adminResources/js/jquery.dashboard.js"></script>
+
+<script src="../../static/adminResources/js/jquery.core.js"></script>
+<script src="../../static/adminResources/js/jquery.app.js"></script>
+
+</body>
+</html>

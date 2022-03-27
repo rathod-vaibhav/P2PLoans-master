@@ -1,0 +1,28 @@
+<div class="topbar">
+
+    <div class="topbar-left">
+        <a href="#" class="logo">
+                                <span>
+                                    <img src="../../static/adminResources/images/logo.jpg" alt="" height="50">
+                                </span>
+            <i>
+                <img src="../../static/adminResources/images/logo_sm.png" alt="" height="28">
+            </i>
+        </a>
+    </div>
+
+    <nav class="navbar-custom">
+
+        <ul class="list-inline float-right mb-0">
+
+            <li>
+                <h4 style="color: #99A3A4 ">
+                    Welcome ! {{ session['session_loginUserName'] | replace("@gmail.com","") }}
+                </h4>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</div>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Add Complain Reply</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description"/>
+    <meta content="Coderthemes" name="author"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <link rel="shortcut icon" href="../../static/adminResources/images/favicon.ico">
+
+    <link href="../../static/adminResources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/adminResources/css/icons.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/adminResources/css/metismenu.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/adminResources/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <script src="../../static/adminResources/js/modernizr.min.js"></script>
+
+</head>
+
+
+<body>
+
+<div id="wrapper">
+
+
+    {% include 'admin/header.html' %}
+
+
+    {% include 'admin/menu.html' %}
+
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <h4 class="page-title float-left">Manage Complain</h4>
+
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card-box table-responsive">
+                    <div class="card-box">
+                        <h4 class="header-title m-t-0">Reply</h4>
+                        <br>
+
+                        <form action="/admin/insertComplainReply" method="post" enctype="multipart/form-data">
+
+                            <input type="text" hidden name="complainId" value="{{ complainId }}" class="form-control">
+
+                            <div class="form-group">
+                                <label>Replay subject<span class="text-danger">*</span></label>
+                                <input type="text" required name="replySubject" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Replay message<span class="text-danger">*</span></label>
+                                <div>
+                                    <textarea required class="form-control" name="replyMessage"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="file">Attachment</label><br>
+                                <input type="file" name="replyFile">
+                            </div>
+
+
+                            <div class="form-group text-right m-b-0">
+                                <button class="btn btn-primary waves-effect waves-light" type="submit">
+                                    Submit
+                                </button>
+                                <button type="reset" class="btn btn-secondary waves-effect m-l-5">
+                                    Cancel
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        {#        {% include 'admin/footer.html' %}#}
+    </div>
+
+</div>
+
+
+<script src="../../static/adminResources/js/jquery.min.js"></script>
+<script src="../../static/adminResources/js/popper.min.js"></script>
+<script src="../../static/adminResources/js/bootstrap.min.js"></script>
+<script src="../../static/adminResources/js/metisMenu.min.js"></script>
+<script src="../../static/adminResources/js/waves.js"></script>
+<script src="../../static/adminResources/js/jquery.slimscroll.js"></script>
+
+
+<script type="text/javascript" src="../../static/adminResources/js/parsley.min.js"></script>
+
+<script src="../../static/adminResources/js/jquery.core.js"></script>
+<script src="../../static/adminResources/js/jquery.app.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('form').parsley();
+    });
+</script>
+
+</body>
+</html>

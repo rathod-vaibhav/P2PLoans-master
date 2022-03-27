@@ -1,0 +1,59 @@
+<header class="header_1" id="header">
+    <div style=" width: 90%;margin: 0 auto;padding:0">
+        <div class="row align-items-center">
+            <div style="float: left">
+                <div class="logo">
+                    <a href="#"><img src="../../static/userResources/images/logo.png" alt=""
+                                     style="height: 30px;width: 180px"></a>
+                </div>
+            </div>
+            <div style="float: right" class="col-lg-6 col-md-7">
+                <nav class="mainmenu MenuInRight text-right">
+                    <ul>
+                        <li class="menu-item-has-children">
+                            <a href="/lender/loadDashboard">home</a>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="#">Loan</a>
+                            <ul class="sub-menu">
+                                <li><a href="/lender/loadLoanDetail">Post Loan</a></li>
+                                <li><a href="/lender/viewLoanDetail">View Loan</a></li>
+                            </ul>
+
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="#">Complain</a>
+                            <ul class="sub-menu">
+                                <li><a href="/lender/loadComplain">Post Complain</a></li>
+                                <li><a href="/lender/viewComplain">View Complain</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a href="#">Feedback</a>
+                            <ul class="sub-menu">
+                                <li><a href="/lender/loadFeedback">Post Feedback</a></li>
+                                <li><a href="/lender/viewFeedback">View Feedback</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div style="float: right" class="col-lg-4 col-md-7">
+                <nav class="mainmenu MenuInRight text-center">
+                    <ul>
+                        <li class="menu-item-has-children">
+
+                            <a href="#">Hi, {{ session['session_loginUserName'] | replace("@gmail.com","") }}</a>
+                            <ul class="sub-menu">
+                                <li><a href="/lender/loadResetPassword">Reset Password</a></li>
+                                <li><a href="/lender/editProfile">Edit Profile</a></li>
+                                <li><a href="/admin/logoutSession">Log Out</a></li>
+                            </ul>
+
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

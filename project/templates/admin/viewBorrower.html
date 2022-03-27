@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>View Borrower</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description"/>
+    <meta content="Coderthemes" name="author"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <link rel="shortcut icon" href="../../static/adminResources/images/favicon.ico">
+
+    <link href="../../static/adminResources/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/adminResources/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/adminResources/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="../../static/adminResources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/adminResources/css/icons.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/adminResources/css/metismenu.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/adminResources/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <script src="../../static/adminResources/js/modernizr.min.js"></script>
+
+</head>
+
+
+<body>
+
+<div id="wrapper">
+
+
+    {% include 'admin/header.html' %}
+
+
+    {% include 'admin/menu.html' %}
+
+
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <h4 class="page-title float-left">Manage Borrower</h4>
+
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-box table-responsive">
+
+
+                            <table id="datatable" class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>User Name</th>
+                                    <th>Contact</th>
+                                    <th>Date of Birth</th>
+                                    <th>City</th>
+                                    <th>Area</th>
+                                    <th>Address</th>
+                                    <th>Aadhar card</th>
+                                    <th>PAN card</th>
+                                    <th>Social Media</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+
+
+                                <tbody>
+                                {% for row in borrowerVOList %}
+                                    <tr>
+                                        <td>{{ row[1]['loginUserName'] }}</td>
+                                        <td>{{ row[0]['borrowerContact'] }}</td>
+                                        <td>{{ row[0]['borrowerDateOfBirth'] }}</td>
+                                        <td>{{ row[2]['cityName'] }}</td>
+                                        <td>{{ row[3]['areaName'] }}</td>
+                                        <td>{{ row[0]['borrowerAddress'] }}</td>
+                                        <td align="center"><a href="
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                {{ row[0]['borrowerAdharCardFilePath'] }}{{ row[0]['borrowerAdharCardFileName'] }}"
+                                                              target="_blank">
+                                            <i class="mdi mdi-file-document"
+                                               style="font-size: 20px;color: #99A3A4 ;"></i>
+                                        </a>
+                                        </td>
+                                        <td align="center"><a href="
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                {{ row[0]['borrowerPanCardFilePath'] }}{{ row[0]['borrowerPanCardFileName'] }}"
+                                                              target="_blank">
+                                            <i class="mdi mdi-file-document"
+                                               style="font-size: 20px;color: #F5B041  ;"></i>
+                                        </a>
+                                        </td>
+                                        <td align="center"><a href="{{ row[0]['borrowerSocialMediaLink'] }}"
+                                                              target="_blank">
+                                            <i class="mdi mdi-link-variant"
+                                               style="font-size: 20px;color: #3498DB  ;"></i>
+                                        </a>
+                                        </td>
+                                        <td align="center">
+                                            {% if row[1]['loginStatus']=='active' %}
+                                                <a href="{{ url_for('adminUpdateBorrowerLoginStatus',loginId =row[1]['loginId'],loginStatus =row[1]['loginStatus']) }}">
+                                                    <i class="typcn typcn-times"
+                                                       style="font-size: 20px;color: #E74C3C ;"></i>
+                                                </a>
+                                            {% elif row[1]['loginStatus']=='inactive' %}
+                                                <a href="{{ url_for('adminUpdateBorrowerLoginStatus',loginId =row[1]['loginId'],loginStatus =row[1]['loginStatus']) }}">
+                                                    <i class="typcn typcn-tick"
+                                                       style="font-size: 20px;color: #27AE60;"></i>
+                                                </a>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        {#        {% include 'admin/footer.html' %}#}
+    </div>
+
+
+</div>
+
+<script src="../../static/adminResources/js/jquery.min.js"></script>
+<script src="../../static/adminResources/js/popper.min.js"></script>
+<script src="../../static/adminResources/js/bootstrap.min.js"></script>
+<script src="../../static/adminResources/js/metisMenu.min.js"></script>
+<script src="../../static/adminResources/js/waves.js"></script>
+<script src="../../static/adminResources/js/jquery.slimscroll.js"></script>
+
+<script src="../../static/adminResources/js/jquery.dataTables.min.js"></script>
+<script src="../../static/adminResources/js/dataTables.bootstrap4.min.js"></script>
+<script src="../../static/adminResources/js/dataTables.buttons.min.js"></script>
+<script src="../../static/adminResources/js/buttons.bootstrap4.min.js"></script>
+<script src="../../static/adminResources/js/jszip.min.js"></script>
+<script src="../../static/adminResources/js/pdfmake.min.js"></script>
+<script src="../../static/adminResources/js/vfs_fonts.js"></script>
+<script src="../../static/adminResources/js/buttons.html5.min.js"></script>
+<script src="../../static/adminResources/js/buttons.print.min.js"></script>
+<script src="../../static/adminResources/js/buttons.colVis.min.js"></script>
+<script src="../../static/adminResources/js/dataTables.responsive.min.js"></script>
+<script src="../../static/adminResources/js/responsive.bootstrap4.min.js"></script>
+
+<script src="../../static/adminResources/js/jquery.core.js"></script>
+<script src="../../static/adminResources/js/jquery.app.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#datatable').DataTable();
+
+        //Buttons examples
+        var table = $('#datatable-buttons').DataTable({
+            lengthChange: false,
+            buttons: ['copy', 'excel', 'pdf', 'colvis']
+        });
+
+        table.buttons().container()
+            .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
+    });
+
+</script>
+
+</body>
+</html>

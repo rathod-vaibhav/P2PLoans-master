@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description"/>
+    <meta content="Coderthemes" name="author"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <link rel="shortcut icon" href="../../static/adminResources/images/favicon.ico">
+
+    <link href="../../static/adminResources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/adminResources/css/icons.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/adminResources/css/metismenu.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/adminResources/css/style.css" rel="stylesheet" type="text/css"/>
+
+    <script src="../../static/adminResources/js/modernizr.min.js"></script>
+
+
+</head>
+
+
+<body class="bg-accpunt-pages">
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="wrapper-page">
+
+                    <div class="account-pages">
+                        <div class="account-box">
+                            <div class="account-logo-box">
+                                <h2 class="text-uppercase text-center">
+                                    <span><img src="../../static/adminResources/images/logo.jpg" alt=""
+                                               height="100"></span>
+
+                                </h2>
+                                <h5 class="text-uppercase font-bold m-b-5 m-t-50">Sign In</h5>
+                            </div>
+                            <div class="account-content">
+                                <form class="form-horizontal" action="/admin/validateLogin" method="post">
+
+                                    <div class="form-group m-b-20 row">
+                                        <div class="col-12">
+                                            <label for="emailaddress">User Name</label>
+                                            <input class="form-control" type="email" name="loginUserName"
+                                                   id="userName" required placeholder="Enter Your Email"
+                                            >
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group row m-b-20">
+                                        <div class="col-12">
+                                            <a href="/admin/loadForgotPassword" class="text-muted pull-right">
+                                                <small>Forgot your password?</small>
+                                            </a>
+                                            <label for="password">Password</label>
+                                            <input class="form-control" type="password" name="loginPassword" required=""
+                                                   id="password" placeholder="Enter your password">
+                                        </div>
+                                    </div>
+
+
+                                    {% if error %}
+                                        <label style="color:red">{{ error }}</label>
+                                    {% elif error_block %}
+                                        <label style="color:red">{{ error_block }}</label>
+                                    {% endif %}
+
+                                    <div class="form-group row text-center m-t-10">
+                                        <div class="col-12">
+                                            <button class="btn btn-md btn-block btn-primary waves-effect waves-light"
+                                                    type="submit">Sign In
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </form>
+
+
+                                <div class="row m-t-50">
+                                    <div class="col-sm-12 text-center">
+                                        <p class="text-muted">Don't have an account?
+                                            <br>
+                                            <a href="/lender/loadRegister">
+                                                <b>Sign Up As Lender</b>
+                                            </a>
+                                            <br>
+                                            <a href="/borrower/loadRegister">
+                                                <b>Sign Up As Borrower</b></a>
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    var resizefunc = [];
+</script>
+
+<script src="../../static/adminResources/js/jquery.min.js"></script>
+<script src="../../static/adminResources/js/popper.min.js"></script>
+<script src="../../static/adminResources/js/bootstrap.min.js"></script>
+<script src="../../static/adminResources/js/metisMenu.min.js"></script>
+<script src="../../static/adminResources/js/waves.js"></script>
+<script src="../../static/adminResources/js/jquery.slimscroll.js"></script>
+
+<script src="../../static/adminResources/js/jquery.core.js"></script>
+<script src="../../static/adminResources/js/jquery.app.js"></script>
+
+</body>
+</html>
